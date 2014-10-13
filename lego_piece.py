@@ -3,6 +3,14 @@ turtle.speed(0)
 turtle.hideturtle()
 
 unit = 20
+
+matrice_orizzontale = [ [ 0 for i in range(8) ] for j in range(8) ]
+
+def aggiorna_matrice_orizontale(x, y, width, height):
+    for i in range(height):
+        for j in range(width):
+            matrice_orizzontale[y+i][x+j-1]=+1
+
 def dots(width, height, color, colors, newX, newY, unit = unit): #draws the dots of the lego
     turtle.penup()
     turtle.color(colors[color])
@@ -22,9 +30,9 @@ def dots(width, height, color, colors, newX, newY, unit = unit): #draws the dots
 
 
 
-def lego_piece(width, height, color, unit = unit): #draws the base of the lego piece
+def lego_piece(width, height, color, colors, x, y, no_first = True, unit = unit): #draws the base of the lego piece
+    goTo(x,y)
     (newX,newY) = turtle.pos()
-    colors = {'red': '#7F100C', 'yellow': '#CCA210', 'white':'#C7C7CC', 'orange': '#CC7323', 'blue': '#1D1B7F', 'black': '#292827'}
     turtle.pensize(1)
     turtle.pencolor(colors[color])
     turtle.fillcolor(color)
@@ -42,6 +50,8 @@ def lego_piece(width, height, color, unit = unit): #draws the base of the lego p
     turtle.home()
     turtle.pensize(1)
     turtle.pendown()
+    if no_first:
+        aggiorna_matrice_orizontale(x, y, width, height)
 
 def goTo(x, y, unit = unit):
     turtle.penup()
@@ -98,8 +108,7 @@ def pezzo_singolo(colore_fill, colore_bordo, unit = unit, height = unit+unit):
 def check_z():
     return True
 
-def pezzo_verticale(width, color, posizione, z, unit = unit):
-    colors = {'red': '#7F100C', 'yellow': '#CCA210', 'white':'#C7C7CC', 'orange': '#CC7323', 'blue': '#1D1B7F', 'black': '#292827'}
+def pezzo_verticale(width, color, posizione, z, colors, unit = unit):
     turtle.pencolor(colors[color])
     turtle.fillcolor(color)
     turtle.penup()
@@ -119,8 +128,8 @@ def pezzo_verticale(width, color, posizione, z, unit = unit):
 
 ########## Base verticale
 
-def disegna_base(unit = unit, width = 8):
-    lego_piece(width,width,'blue')
+def disegna_base(colors, unit = unit, width = 8):
+    lego_piece(width,width,'blue',colors,0,0,False)
     turtle.penup()
     turtle.backward(250)
     turtle.pendown()
