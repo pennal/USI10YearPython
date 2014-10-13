@@ -7,9 +7,9 @@ unit = 20
 matrice_orizzontale = [ [ 0 for i in range(8) ] for j in range(8) ]
 
 def aggiorna_matrice_orizontale(x, y, width, height):
-    for i in range(height):
-        for j in range(width):
-            matrice_orizzontale[y+i][x+j-1]=+1
+    for i in range(width):
+        for j in range(height):
+            matrice_orizzontale[i+x][j+y]+=1
 
 def dots(width, height, color, colors, newX, newY, unit = unit): #draws the dots of the lego
     turtle.penup()
@@ -105,16 +105,27 @@ def pezzo_singolo(colore_fill, colore_bordo, unit = unit, height = unit+unit):
     turtle.pencolor(colore_bordo)
     dot_vertical(height)
 
+def check_y(x, y, width, height):
+    max = 0
+    for i in range(width):
+        for j in range(height):
+            if matrice_orizzontale[i+x][j+y]> max:
+                max = matrice_orizzontale[i+x][j+y]
+    print(matrice_orizzontale)
+    print(max)
+    return max-1
+
 def check_z():
     return True
 
-def pezzo_verticale(width, color, posizione, z, colors, unit = unit):
+def pezzo_verticale(width, height, color, posizione, depth, colors, unit = unit):
+    y = check_y(posizione, depth, width, height)
     turtle.pencolor(colors[color])
     turtle.fillcolor(color)
     turtle.penup()
     turtle.forward(posizione*unit)
     turtle.left(90)
-    turtle.forward((unit+unit)*z)
+    turtle.forward((unit+unit)*y)
     turtle.right(90)
     turtle.pendown()
     for i in range(width):
