@@ -98,12 +98,15 @@ def pezzo_singolo(colore_fill, colore_bordo, unit = unit, height = unit+unit):
 def check_z():
     return True
 
-def pezzo_verticale(width, color, posizione, unit = unit):
+def pezzo_verticale(width, color, posizione, z, unit = unit):
     colors = {'red': '#7F100C', 'yellow': '#CCA210', 'white':'#C7C7CC', 'orange': '#CC7323', 'blue': '#1D1B7F', 'black': '#292827'}
     turtle.pencolor(colors[color])
     turtle.fillcolor(color)
     turtle.penup()
     turtle.forward(posizione*unit)
+    turtle.left(90)
+    turtle.forward((unit+unit)*z)
+    turtle.right(90)
     turtle.pendown()
     for i in range(width):
         if check_z():
@@ -112,15 +115,6 @@ def pezzo_verticale(width, color, posizione, unit = unit):
     bordo()
     turtle.backward(width*unit)
     bordo()
-
-
-
-
-
-
-
-
-
 
 
 ########## Base verticale
