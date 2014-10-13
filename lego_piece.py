@@ -1,8 +1,15 @@
 import turtle
 turtle.speed(0)
-turtle.hideturtle()
+#Speeds up the whole drawing
+turtle.tracer(1000)
+
+#Setting an undo buffer
+turtle.setundobuffer(50)
+
 
 unit = 20
+
+
 def dots(width, height, color, colors, newX, newY, unit = unit): #draws the dots of the lego
     turtle.penup()
     turtle.color(colors[color])
@@ -41,12 +48,19 @@ def lego_piece(width, height, color, unit = unit): #draws the base of the lego p
     turtle.penup()
     turtle.home()
     turtle.pendown()
+    
+    print("Aggiunto pezzo " + str(width) + "x" + str(height) + ", " + str(color) + ", in coordinate (" + str(newX//unit) + ", " + str(newY//unit) + ")")
 
 def goTo(x, y, unit = unit):
     turtle.penup()
     turtle.goto(x*unit,y*unit)
+    turtle.update()
     turtle.pendown()
-    #log by pennationelove
+    print("Posizione corrente: (" + str(x) + ", " + str(y) + ")")
+	
+def undo():
+    turtle.undo()
+	
 
 
 
