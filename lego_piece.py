@@ -111,8 +111,6 @@ def check_y(x, y, width, height):
         for j in range(height):
             if matrice_orizzontale[i+x][j+y]> max:
                 max = matrice_orizzontale[i+x][j+y]
-    print(matrice_orizzontale)
-    print(max)
     return max-1
 
 def check_z():

@@ -11,5 +11,6 @@ def pezzo(width, height, color, x, y, colors = colors):
     pezzo_verticale(width, height, color, x, y, colors)
 
 pezzo(2,3, 'red', 2,3)
-pezzo(1,1, 'orange', 2,1)
-pezzo(1,2, 'blue', 3,3)
+pezzo(4,3, 'orange', 2,1)
+pezzo(1,2, 'black', 3,3)
+pezzo(1,7, 'yellow',6,0)
