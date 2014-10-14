@@ -1,10 +1,8 @@
 import turtle
 import math
 
-__author__ = 'Alessio Buratti'
-
 height = 5
-lato = 8
+lato = 6
 unit = 20
 alfa = 45
 depth = unit*(math.sin(math.radians(alfa)))

@@ -1,7 +1,6 @@
 import turtle
 from griglia import unit, alfa, depth, lato, height
 
-__author__ = 'Alessio Buratti'
 colors = {'red': '#7F100C', 'yellow': '#CCA210', 'white':'#C7C7CC', 'orange': '#CC7323', 'blue': '#1D1B7F', 'black': '#292827'}
 
 def pezzo(color, colors = colors, unit = unit, alfa = alfa, depth = depth):
@@ -58,6 +57,26 @@ def lego(larghezza, profonodita, color, alfa = alfa, depth = depth, unit = unit,
 
 ############ BASE ##########
 
+def line_base(lato = lato, unit = unit, alfa = alfa, depth = depth): #disegna le linee scure sulla base per rendere meglio l'idea
+    for i in range(lato):
+        turtle.forward(unit)
+        turtle.left(alfa)
+        turtle.forward(lato*depth)
+        turtle.backward(lato*depth)
+        turtle.right(alfa)
+    for i in range(lato):
+        turtle.left(alfa)
+        turtle.forward(depth)
+        turtle.right(alfa)
+        turtle.backward(lato*unit)
+        turtle.forward(lato*unit)
+    turtle.backward(lato*unit)
+    turtle.left(alfa)
+    turtle.backward(lato*depth)
+    turtle.right(alfa)
+
+
+#disegna una piastra blu
 def base(color = 'blue',colors = colors, lato = lato, unit = unit, alfa = alfa, depth = depth, height = height):
     turtle.pencolor(colors[color])
     turtle.fillcolor(color)
@@ -87,3 +106,4 @@ def base(color = 'blue',colors = colors, lato = lato, unit = unit, alfa = alfa, 
     turtle.right(alfa)
     turtle.backward(unit*lato)
     turtle.end_fill()
+    line_base()
