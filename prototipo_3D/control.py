@@ -1,5 +1,12 @@
-from griglia import lato
+import turtle
+from commands import *
 
+#========= CONSTANTS =========
+height = 5
+lato = 6
+unit = 20
+alfa = 45
+depth = unit*(math.sin(math.radians(alfa)))
 matrice_piana = [ [ 0 for i in range(lato) ] for j in range(lato) ]
 
 def aggiorna_matrice(larghezza, profondita, x, z, lato = lato):
@@ -16,3 +23,4 @@ def aggiorna_matrice(larghezza, profondita, x, z, lato = lato):
         return x, max-1, z
     else:
         return None
+
