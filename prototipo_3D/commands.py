@@ -48,7 +48,6 @@ def disegnaPezzoLego(larghezza, profonodita, color, alfa = alfa, depth = depth, 
     turtle.left(alfa)
     turtle.forward(depth*(profonodita-1))
     turtle.right(alfa)
-    # turtle.backward(unit)
     #inizia a disegnare una riga alla volta partendo dal fondo
     for j in range(profonodita):
         for i in range(larghezza):
@@ -112,9 +111,12 @@ def controlloPezzoValido(larghezza, altezza, x, z, color):
     coor = control.aggiorna_matrice(larghezza,altezza,x,z)
     if coor is not None:
         go_to(coor[0],coor[1],coor[2])
-        print("Posizione corrente: x: " + str(x) + ", z: " + str(z))
+        input('')
+        print("Posizione corrente: x: " + str(6-z) + ", y: " + str(x))
         disegnaPezzoLego(larghezza, altezza, color)
         print("Disegnato pezzo " + str(larghezza) + "x" + str(altezza) + " di colore \"" + color + "\"")
+        turtle.update()
+
     else:
         print('Fuori dal piano')
 

@@ -1,4 +1,3 @@
-import turtle
 from commands import *
 
 #========= CONSTANTS =========
