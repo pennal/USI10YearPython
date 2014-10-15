@@ -4,7 +4,7 @@ import control
 #========= CONSTANTS =========
 height = 5
 lato = 6
-unit = 20
+unit = 35
 alfa = 45
 depth = unit*(math.sin(math.radians(alfa)))
 
